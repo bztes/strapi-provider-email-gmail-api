@@ -4,12 +4,20 @@ Yet another Strapi email provider for Gmail using OAuth 2.0 ;)
 
 ## Installation
 
-```bash
-npm i --save @bztes/strapi-provider-email-gmail-api
-```
+Please note that Strapi can't handle scoped provider packages. Therefor it's required to install this package with a different alias.
 
 ```bash
-yarn add @bztes/strapi-provider-email-gmail-api
+npm i --save strapi-provider-email-gmail-api@npm:@bztes/strapi-provider-email-gmail-api
+```
+
+The **`package.json`** should then look something like this:
+
+```json
+  "dependencies": {
+    // ...
+    "strapi-provider-email-gmail-api": "npm:@bztes/strapi-provider-email-gmail-api@1.0.0",
+    // ...
+  }
 ```
 
 ## Preparing Google API

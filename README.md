@@ -6,17 +6,23 @@ Yet another Strapi email provider for Gmail using OAuth 2.0 ;)
 
 Please note that Strapi can't handle scoped provider packages. Therefor it's required to install this package with a different alias.
 
-```bash
-npm i --save strapi-provider-email-gmail-api@npm:@bztes/strapi-provider-email-gmail-api
+```sh
+npm i @strapi/provider-email-gmail-api@npm:@bztes/strapi-provider-email-gmail-api
 ```
 
-The **`package.json`** should then look something like this:
+or
+
+```sh
+yarn add @strapi/provider-email-gmail-api@npm:@bztes/strapi-provider-email-gmail-api
+```
+
+The **`package.json`** should then look like this:
 
 ```json
   "dependencies": {
-    // ...
-    "strapi-provider-email-gmail-api": "npm:@bztes/strapi-provider-email-gmail-api@1.0.0",
-    // ...
+    ...
+    "@strapi/provider-email-gmail-api": "npm:@bztes/strapi-provider-email-gmail-api@^1.0.1",
+    ...
   }
 ```
 
@@ -77,28 +83,43 @@ Enable the Gmail API with OAuth authentication in 5 steps
 
 ## Provider Configuration Example
 
-config/plugins.js
+**config/plugins.js**
 
 ```js
 module.exports = ({ env }) => ({
   // ...
   email: {
-    provider: 'gmail-api',
-    providerOptions: {
-      auth: {
-        userId: 'mail@example.com',
-        clientId: '123....321.apps.googleusercontent.com',
-        clientSecret: 'ABC123...',
-        refreshToken: '1//123XYZ...',
+    config: {
+      provider: 'gmail-api',
+      providerOptions: {
+        auth: {
+          userId: env('EMAIL_OAUTH2_USERID'),
+          clientId: env('EMAIL_OAUTH2_CLIENTID'),
+          clientSecret: env('EMAIL_OAUTH2_CLIENTSECRET'),
+          refreshToken: env('EMAIL_OAUTH2_REFRESHTOKEN'),
+        },
       },
-    },
-    settings: {
-      defaultFrom: 'Example Inc. <no-reply@example.com>',
-      defaultReplyTo: 'Example Inc. <mail@example.com>',
+      settings: {
+        defaultFrom: env('EMAIL_FROM'),
+        defaultReplyTo: env('EMAIL_REPLYTO'),
+        testAddress: env('EMAIL_TEST_ADDRESS'),
+      },
     },
   },
   // ...
 });
+```
+
+**.env**
+
+```
+EMAIL_FROM=Example Inc. <foo@my-domain.com>
+EMAIL_REPLYTO=Example Inc. <foo@my-domain.com>
+EMAIL_TEST_ADDRESS=foo@my-domain.com
+EMAIL_OAUTH2_USERID=foo@my-domain.com
+EMAIL_OAUTH2_CLIENTID=123....321.apps.googleusercontent.com
+EMAIL_OAUTH2_CLIENTSECRET=ABC123...
+EMAIL_OAUTH2_REFRESHTOKEN=1//123XYZ...
 ```
 
 ## Resources

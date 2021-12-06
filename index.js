@@ -1,6 +1,6 @@
 const { google } = require('googleapis');
 const MailComposer = require('nodemailer/lib/mail-composer');
-const { removeUndefined } = require('strapi-utils');
+const { removeUndefined } = require('@strapi/utils');
 
 function toWebsafeBase64(s) {
   return s.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
@@ -37,9 +37,7 @@ async function sendMail(providerOptions, settings, options) {
 }
 
 module.exports = {
-  init: (providerOptions = {}, settings = {}) => {
-    return {
-      send: async (options) => sendMail(providerOptions, settings, options),
-    };
-  },
+  init: (providerOptions = {}, settings = {}) => ({
+    send: (options) => sendMail(providerOptions, settings, options),
+  }),
 };

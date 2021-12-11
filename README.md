@@ -21,9 +21,15 @@ The **`package.json`** should then look like this:
 ```json
   "dependencies": {
     ...
-    "@strapi/provider-email-gmail-api": "npm:@bztes/strapi-provider-email-gmail-api@^1.0.1",
+    "@strapi/provider-email-gmail-api": "npm:@bztes/strapi-provider-email-gmail-api@^4.0.0",
     ...
   }
+```
+
+### Strapi v3
+
+```sh
+npm i @strapi/provider-email-gmail-api@npm:@bztes/strapi-provider-email-gmail-api@1.0.1
 ```
 
 ## Preparing Google API

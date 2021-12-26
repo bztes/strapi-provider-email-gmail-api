@@ -2,34 +2,45 @@
 
 Yet another Strapi email provider for Gmail using OAuth 2.0 ;)
 
+| Strapi Version | use NPM Version |
+| -------------- | --------------- |
+| v4             | 4.x             |
+| v3             | 1.x             |
+
 ## Installation
 
-Please note that Strapi can't handle scoped provider packages. Therefor it's required to install this package with a different alias.
+It's required to install this package with a different alias so that it belongs to the @strapi scope.
 
 ```sh
+# npm
 npm i @strapi/provider-email-gmail-api@npm:@bztes/strapi-provider-email-gmail-api
-```
 
-or
-
-```sh
+# or yarn
 yarn add @strapi/provider-email-gmail-api@npm:@bztes/strapi-provider-email-gmail-api
 ```
 
-The **`package.json`** should then look like this:
+The `package.json` should then contain:
 
 ```json
   "dependencies": {
-    ...
     "@strapi/provider-email-gmail-api": "npm:@bztes/strapi-provider-email-gmail-api@^4.0.0",
-    ...
   }
 ```
 
-### Strapi v3
+### Differences in v3
+
+Strapi v3 can't handle scoped provider packages at all. Here the package name must be prefixed with `strapi-`.
 
 ```sh
-npm i @strapi/provider-email-gmail-api@npm:@bztes/strapi-provider-email-gmail-api@1.0.1
+npm i strapi-provider-email-gmail-api@npm:@bztes/strapi-provider-email-gmail-api@1.0.1
+```
+
+`package.json`:
+
+```json
+  "dependencies": {
+    "strapi-provider-email-gmail-api": "npm:@bztes/strapi-provider-email-gmail-api@1.0.1",
+  }
 ```
 
 ## Preparing Google API
@@ -93,7 +104,6 @@ Enable the Gmail API with OAuth authentication in 5 steps
 
 ```js
 module.exports = ({ env }) => ({
-  // ...
   email: {
     config: {
       provider: 'gmail-api',
@@ -112,7 +122,6 @@ module.exports = ({ env }) => ({
       },
     },
   },
-  // ...
 });
 ```
 
@@ -126,6 +135,19 @@ EMAIL_OAUTH2_USERID=foo@my-domain.com
 EMAIL_OAUTH2_CLIENTID=123....321.apps.googleusercontent.com
 EMAIL_OAUTH2_CLIENTSECRET=ABC123...
 EMAIL_OAUTH2_REFRESHTOKEN=1//123XYZ...
+```
+
+### Differences in v3
+
+In Strapi v3 all the provider settings are directly enclosed by the email block. The config block must be removed.
+
+```js
+module.exports = ({ env }) => ({
+  email: {
+    provider: 'gmail-api',
+    ...
+  },
+});
 ```
 
 ## Resources

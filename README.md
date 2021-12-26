@@ -125,6 +125,18 @@ module.exports = ({ env }) => ({
 });
 ```
 
+**.env**
+
+```
+EMAIL_FROM=Example Inc. <foo@my-domain.com>
+EMAIL_REPLYTO=Example Inc. <foo@my-domain.com>
+EMAIL_TEST_ADDRESS=foo@my-domain.com
+EMAIL_OAUTH2_USERID=foo@my-domain.com
+EMAIL_OAUTH2_CLIENTID=123....321.apps.googleusercontent.com
+EMAIL_OAUTH2_CLIENTSECRET=ABC123...
+EMAIL_OAUTH2_REFRESHTOKEN=1//123XYZ...
+```
+
 ### Differences in v3
 
 In Strapi v3 all the provider settings are directly enclosed by the email block. The config block must be removed.
@@ -136,18 +148,6 @@ module.exports = ({ env }) => ({
     ...
   },
 });
-```
-
-**.env**
-
-```
-EMAIL_FROM=Example Inc. <foo@my-domain.com>
-EMAIL_REPLYTO=Example Inc. <foo@my-domain.com>
-EMAIL_TEST_ADDRESS=foo@my-domain.com
-EMAIL_OAUTH2_USERID=foo@my-domain.com
-EMAIL_OAUTH2_CLIENTID=123....321.apps.googleusercontent.com
-EMAIL_OAUTH2_CLIENTSECRET=ABC123...
-EMAIL_OAUTH2_REFRESHTOKEN=1//123XYZ...
 ```
 
 ## Resources

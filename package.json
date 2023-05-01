@@ -1,9 +1,10 @@
 {
   "name": "@bztes/strapi-provider-email-gmail-api",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Strapi email provider for Gmail using googleapi and OAuth 2.0",
   "main": "index.js",
   "scripts": {
+    "release": "changeset publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,5 +31,8 @@
   },
   "strapi": {
     "isProvider": true
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.1"
   }
 }

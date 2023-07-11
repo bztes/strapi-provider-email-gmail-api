@@ -25,14 +25,14 @@
     "url": "https://github.com/bztes/strapi-provider-email-gmail-api/issues"
   },
   "dependencies": {
-    "@strapi/utils": "^4.10.1",
-    "googleapis": "^118.0.0",
-    "nodemailer": "^6.9.1"
+    "@strapi/utils": "^4.11.4",
+    "googleapis": "^121.0.0",
+    "nodemailer": "^6.9.3"
   },
   "strapi": {
     "isProvider": true
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.1"
+    "@changesets/cli": "^2.26.2"
   }
 }
